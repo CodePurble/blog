@@ -1,7 +1,7 @@
 ---
 title: "Visionary"
 date: 2022-10-03T18:02:03+05:30
-draft: true
+draft: false
 type: "post"
 tags: ["vlsi", "research"]
 showTableOfContents: true
