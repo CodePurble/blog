@@ -1,0 +1,83 @@
+baseURL = "http://example.org/"
+defaultContentLanguage = "en"
+languageCode = "en"
+title = "Home."
+theme = "gokarna"
+
+# Automatically generate robots.txt
+enableRobotsTXT = true
+
+# Theme for code blocks
+pygmentsStyle = "dracula"
+
+[params]
+    avatarURL = "/images/tilde.svg"
+    avatarSize = "size-xl"
+    description = "Where my thoughts reside"
+    footer = "CodePurble"
+    socialIcons = [
+        { name = "linkedin", url = "https://www.linkedin.com/in/cramprakash" },
+        { name = "github", url = "https://github.com/CodePurble" },
+    ]
+    showPostsOnHomePage = "recent"
+    metaKeywords = ["blog", "hugo", "tech"]
+  customHeadHTML = """
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css" integrity="sha384-bYdxxUwYipFNohQlHt0bjN/LCpueqWz13HufFEV1SUatKs1cm4L6fFgCi1jT643X" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.js" integrity="sha384-Qsn9KnoKISj6dI8g7p1HBlNpVx0I8p1SvlwOldgi3IorMle61nQy4zEahWYtljaz" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised optionsThoughts
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+      });
+    </script>
+  """
+
+[menu]
+    [[menu.main]]
+        # Unique identifier for a menu item
+        identifier = "posts"
+
+        url = "/posts/"
+
+        # You can add extra information before the name (HTML format is supported), such as icons
+        pre = ""
+
+        # You can add extra information after the name (HTML format is supported), such as icons
+        post = ""
+
+        # Display name
+        name = "Posts"
+
+        # Weights are used to determine the ordering
+        weight = 1
+
+    [[menu.main]]
+        identifier = "tags"
+        name = "Tags"
+        url = "/tags/"
+        weight = 2
+
+    [[menu.main]]
+        identifier = "github"
+        url = "https://github.com"
+        weight = 3
+
+        # We use feather-icons: https://feathericons.com/
+        pre = "<span data-feather='github'></span>"
+
+[markup]
+    [markup.tableOfContents]
+    startLevel = 1
+    endLevel = 3
+    ordered = false
+
