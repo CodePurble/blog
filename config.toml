@@ -1,4 +1,4 @@
-baseURL = "http://example.org/"
+baseURL = "https://codepurble.github.io/blog/"
 defaultContentLanguage = "en"
 languageCode = "en"
 title = "Home."
@@ -69,7 +69,7 @@ pygmentsStyle = "dracula"
 
     [[menu.main]]
         identifier = "github"
-        url = "https://github.com"
+        url = "https://github.com/CodePurble/blog"
         weight = 3
 
         # We use feather-icons: https://feathericons.com/
