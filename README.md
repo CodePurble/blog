@@ -1,5 +1,6 @@
 # Blog
-Sources for my personal blog, built using Hugo.
+So I thought I'd try my hand at blogging. These are the sources for my personal
+blog, built using Hugo.
 
 Dependencies:
 * [Hugo](https://gohugo.io/)
