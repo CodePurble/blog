@@ -100,8 +100,8 @@ RADAR!
 
 ---
 
-Although Moore's law has slowly started declining in the past few
-years, the fact that it held on for so long is in itself proof of the
+Although Moore's law has slowly started declining in the past few years, the
+fact that it is still holding on for so long is in itself proof of the
 expertise and vision Dr. Moore had in his field. It is an incredible insight
 into how one must think in order to propel innovation.
 
