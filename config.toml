@@ -7,6 +7,8 @@ theme = "gokarna"
 # Automatically generate robots.txt
 enableRobotsTXT = true
 
+enableEmoji = true
+
 # Theme for code blocks
 pygmentsStyle = "dracula"
 
@@ -60,6 +62,12 @@ pygmentsStyle = "dracula"
 
         # Weights are used to determine the ordering
         weight = 1
+
+    # [[menu.main]]
+    #     identifier = "pages"
+    #     name = "Pages"
+    #     url = "/pages/"
+    #     weight = 2
 
     [[menu.main]]
         identifier = "tags"
