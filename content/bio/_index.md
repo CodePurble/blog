@@ -1,7 +1,7 @@
 ---
 title: "About me"
 date: 2022-10-04T21:12:14+05:30
-draft: true
+draft: false
 type: "page"
 ---
 
