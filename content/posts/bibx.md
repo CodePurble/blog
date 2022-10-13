@@ -1,7 +1,7 @@
 ---
 title: "bibextract: What, why and how?"
 date: 2022-10-09T11:52:22+05:30
-draft: true
+draft: false
 type: "post"
 tags: ["latex", "bibtex", "python", "opensource"]
 showTableOfContents: true
@@ -40,21 +40,28 @@ This is accomplished in two stages:
 * Search and write
 
 ## Extraction
-We look to the ever-reliable `coreutils` for help here. `grep` can be used to
-search for `\cite{}` in the LaTeX sources. `sed` can then be used to extract
-the BibTeX entry name. The resulting one-liner is:
+We look to the ever-reliable `coreutils`, and Perl-Compatible Regular
+Expressions (PCREs) for help here. `grep` can be used to search for `\cite{}`
+in the LaTeX sources. `sed` can then be used to extract the BibTeX entry name.
+The resulting one-liner is:
 ```sh
 # ext.sh f1.tex
-grep -Eo '\\cite{.*}' $1 | sed -E 's/\\cite\{(.*)\}/\1/g'
+grep -Po '\\cite\{.*?\}' $1 | sed -E 's/\\cite\{(.*)\}/\1/g'
 ```
 
-* `grep -Eo '\\cite{.*}' $1` searches for the text `\cite{}` in
-  the file provided as the first argument to the script (`$1`). So if the file
+* `grep -Po '\\cite\{.*?\}' $1` searches for the text `\cite{}` in the file
+  provided as the first argument to the script (`$1`).   E.g. if the file
   contains both `\cite{123}` and `\cite{abc}`, the `grep` command will return:
   ```
   \cite{123}
   \cite{abc}
   ```
+  Note the _lazy matching_ that is being done using `?`, causing the `*`
+  quantifier to match as **few** instances as possible. This is important as it
+  helps deal with edge cases like this line: `\cite{abc}. Foo \textbf{baz}`. If
+  lazy matching was not used, `grep` would return the entire line, instead of
+  just `\cite{abc}` (why?).
+
 * `sed -E 's/\\cite\{(.*)\}/\1/g'` processes this output by removing the
   unwanted `\cite` and the brackets, leaving us with just what we need: the
   BibTeX entry names. For the discussed example, this command will return:
@@ -62,12 +69,11 @@ grep -Eo '\\cite{.*}' $1 | sed -E 's/\\cite\{(.*)\}/\1/g'
   123
   abc
   ```
-
-I learnt something new about `sed` and [RegEx](https://regexone.com/)
-sub-expressions while doing this. When using `sed`, you can use `\1` through
-`\9` as references to the corresponding matching sub-expression. In our case,
-the sub-expression is the part within the braces in `\cite{}`, indicated by the
-use of `()` in the RegEx.
+  I learnt something new about `sed` and sub-expressions while doing this. When
+  using `sed`, you can use `\1` through `\9` as references to the corresponding
+  matching sub-expression. In our case, the sub-expression is the part within
+  the braces in `\cite{}`, indicated by the use of `()` in the regular
+  expression.
 
 ## Search and write
 The rest of the work is done using Python, because I am **_not_** writing a
