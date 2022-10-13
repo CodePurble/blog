@@ -1,6 +1,6 @@
 ---
 title: "bibextract: What, why and how?"
-date: 2022-10-09T11:52:22+05:30
+date: 2022-10-14T00:37:54+05:30
 draft: false
 type: "post"
 tags: ["latex", "bibtex", "python", "opensource"]
